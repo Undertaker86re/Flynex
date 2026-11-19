@@ -1,0 +1,226 @@
+/* ===== Modo escuro da Flynex =====
+   Ativado por <html data-tema="escuro">. As cores de marca (azul, ciano e roxo) continuam as mesmas;
+   mudam só o fundo, os cartões, o texto e as bordas. */
+
+html[data-tema="escuro"] {
+  color-scheme: dark;
+  --ink: #f1f1f4; /* texto e bordas ficam claros */
+  --paper: #0f0f12; /* fundo da página */
+  --surface: #1b1b22; /* cartões, formulários e botões brancos */
+  --muted: #a9a9b6;
+  --line: #2f2f38;
+  --sky: #0d2b36;
+  --lilac: #241c3f;
+}
+
+html[data-tema="escuro"] .row:nth-child(1) {
+  --cl: #0d2b36;
+}
+html[data-tema="escuro"] .row:nth-child(2) {
+  --cl: #1a2650;
+}
+html[data-tema="escuro"] .row:nth-child(3) {
+  --cl: #241c3f;
+}
+html[data-tema="escuro"] .val:nth-child(1) {
+  --cl: #0f4a5c;
+}
+html[data-tema="escuro"] .val:nth-child(2) {
+  --cl: #24367a;
+}
+html[data-tema="escuro"] .val:nth-child(3) {
+  --cl: #3b2c73;
+}
+
+html[data-tema="escuro"] header.scrolled {
+  box-shadow: 0 6px 0 rgba(255, 255, 255, 0.08);
+}
+html[data-tema="escuro"] .dark {
+  border-color: #3a3a44;
+}
+html[data-tema="escuro"] footer {
+  border-top: 2px solid #3a3a44;
+}
+
+/* texto que fica SOBRE ciano continua escuro (senão some) */
+html[data-tema="escuro"]
+  :is(
+    .btn-cyan,
+    .bg-cyan,
+    .burger,
+    .strip,
+    .vs .depois,
+    .kicker,
+    .hl,
+    .js .in .hl,
+    .hl-white,
+    .row:nth-child(1) .n,
+    .tl-a,
+    .diff-cards article:nth-child(1) i,
+    .pricebox-side li i,
+    .warn,
+    .flow li:nth-child(1) .head,
+    .size:nth-child(1) .size-head,
+    .miv-card.visao,
+    .val:nth-child(1) i,
+    .side,
+    .side a,
+    .n404 span:nth-child(2),
+    .missao .tag-miv
+  ) {
+  color: var(--dark);
+}
+
+html[data-tema="escuro"] .missao .tag-miv {
+  background: #fff;
+}
+
+/* cartões e áreas com superfície escura herdam texto claro */
+html[data-tema="escuro"]
+  :is(.size, .val, .pricebox-side, .timeline, .diff-cards article, .flow li) {
+  color: var(--ink);
+}
+
+html[data-tema="escuro"] ::placeholder {
+  color: #8d8d9a;
+}
+
+/* logotipo do cabeçalho: versão com "FLY" branco no escuro */
+.logo .logo-word-escuro {
+  display: none;
+}
+html[data-tema="escuro"] .logo .logo-word-claro {
+  display: none;
+}
+html[data-tema="escuro"] .logo .logo-word-escuro {
+  display: block;
+}
+html.a11y-contraste .logo .logo-word-claro {
+  display: none;
+}
+html.a11y-contraste .logo .logo-word-escuro {
+  display: block;
+}
+html.a11y-contraste .logo .logo-word {
+  filter: none;
+}
+
+/* botão que alterna o tema */
+.tema-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: var(--surface);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 3px 3px 0 var(--ink);
+  font:
+    600 15px "Inter",
+    Arial,
+    sans-serif;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+
+.tema-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.tema-btn svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.tema-btn .tema-lua {
+  display: none;
+}
+html[data-tema="escuro"] .tema-btn .tema-sol {
+  display: none;
+}
+html[data-tema="escuro"] .tema-btn .tema-lua {
+  display: block;
+}
+.tema-btn .tema-texto {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  nav .tema-btn {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0 14px;
+    margin-top: 6px;
+  }
+  nav .tema-btn .tema-texto {
+    display: inline;
+  }
+}
+
+/* ===== menu de acessibilidade no modo escuro ===== */
+html[data-tema="escuro"] .a11y-raiz {
+  color: #f1f1f4;
+}
+html[data-tema="escuro"] .a11y-painel {
+  background: #1b1b22;
+  border-color: #f1f1f4;
+  box-shadow: 6px 6px 0 rgba(255, 255, 255, 0.25);
+}
+html[data-tema="escuro"] .a11y-topo {
+  color: #171717;
+  border-color: #f1f1f4;
+}
+html[data-tema="escuro"] .a11y-topo .a11y-fechar {
+  color: #171717;
+}
+html[data-tema="escuro"] .a11y-tamanho,
+html[data-tema="escuro"] .a11y-opcao,
+html[data-tema="escuro"] .a11y-ler {
+  background: #25252d;
+  color: #f1f1f4;
+  border-color: #f1f1f4;
+}
+html[data-tema="escuro"] .a11y-tamanho-botoes button,
+html[data-tema="escuro"] .a11y-reset {
+  background: #33284f;
+  color: #f1f1f4;
+  border-color: #f1f1f4;
+}
+html[data-tema="escuro"] .a11y-opcao[aria-pressed="true"],
+html[data-tema="escuro"] .a11y-ler[aria-pressed="true"] {
+  background: #2563eb;
+  color: #fff;
+}
+html[data-tema="escuro"] .a11y-nota {
+  color: #a9a9b6;
+}
+html[data-tema="escuro"] .a11y-abrir {
+  border-color: #f1f1f4;
+  box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* símbolo da marca: versão própria para o modo escuro */
+.logo .logo-mark-escuro,
+.flogo .logo-mark-escuro {
+  display: none;
+}
+html[data-tema="escuro"] .logo .logo-mark-claro,
+html[data-tema="escuro"] .flogo .logo-mark-claro,
+html.a11y-contraste .logo .logo-mark-claro,
+html.a11y-contraste .flogo .logo-mark-claro {
+  display: none;
+}
+html[data-tema="escuro"] .logo .logo-mark-escuro,
+html[data-tema="escuro"] .flogo .logo-mark-escuro,
+html.a11y-contraste .logo .logo-mark-escuro,
+html.a11y-contraste .flogo .logo-mark-escuro {
+  display: block;
+}
