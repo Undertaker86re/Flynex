@@ -1907,7 +1907,8 @@ footer::before {
 .js .flow > .reveal.in,
 .js .sizes > .reveal.in,
 .js .diff-cards > .reveal.in,
-.js .miv-vals > .reveal.in {
+.js .miv-vals > .reveal.in,
+.js .team-grid > .reveal.in {
   animation-name: surge;
 }
 
@@ -2093,5 +2094,82 @@ footer::before {
   * {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ====== equipe (sobre) ====== */
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.team-card {
+  --c: var(--cyan);
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.team-card:nth-child(3n + 2) {
+  --c: var(--blue);
+}
+
+.team-card:nth-child(3n) {
+  --c: var(--purple);
+}
+
+.team-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 8px;
+  background: var(--c);
+  z-index: 1;
+}
+
+.team-card:hover {
+  transform: translate(-3px, -3px) rotate(-0.6deg);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.team-foto {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-bottom: 2px solid var(--ink);
+}
+
+.team-info {
+  padding: 18px 20px 22px;
+}
+
+.team-info h3 {
+  font-size: 20px;
+}
+
+.team-role {
+  margin-top: 4px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+@media (max-width: 1000px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .team-grid {
+    grid-template-columns: 1fr;
   }
 }

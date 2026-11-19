@@ -77,7 +77,15 @@ html[data-tema="escuro"] .missao .tag-miv {
 
 /* cartões e áreas com superfície escura herdam texto claro */
 html[data-tema="escuro"]
-  :is(.size, .val, .pricebox-side, .timeline, .diff-cards article, .flow li) {
+  :is(
+    .size,
+    .val,
+    .team-card,
+    .pricebox-side,
+    .timeline,
+    .diff-cards article,
+    .flow li
+  ) {
   color: var(--ink);
 }
 
