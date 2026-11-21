@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   raiz.innerHTML =
     '<button type="button" class="a11y-abrir" aria-expanded="false" aria-controls="a11y-painel" aria-label="Acessibilidade">' +
-    '<i class="fas fa-universal-access"></i></button>' +
+    '<svg class="a11y-icone-original" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="32" cy="17" r="5" fill="currentColor"/><path d="M32 25v16M17 30l15 5 15-5M32 41 22 53M32 41l10 12" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
     '<section class="a11y-painel" id="a11y-painel" role="dialog" aria-labelledby="a11y-titulo" hidden tabindex="-1">' +
     '<div class="a11y-topo"><h2 id="a11y-titulo">Acessibilidade</h2>' +
     '<button type="button" class="a11y-fechar" aria-label="Fechar"><i class="fas fa-xmark"></i></button></div>' +
