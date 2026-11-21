@@ -370,3 +370,6 @@ html.a11y-contraste .logo .logo-word {
     max-height: calc(100vh - 96px);
   }
 }
+
+/* Símbolo de acessibilidade original, desenhado localmente em SVG. */
+.a11y-abrir .a11y-icone-original{display:block;width:1.55rem;height:1.55rem;flex:0 0 auto;color:currentColor}
