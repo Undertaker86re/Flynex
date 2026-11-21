@@ -1,33 +1,53 @@
 (function () {
-  var chave = "flynex-tema";
-  var salvo = localStorage.getItem(chave);
-  var escuro = salvo
-    ? salvo === "escuro"
-    : matchMedia("(prefers-color-scheme: dark)").matches;
+  "use strict";
 
-  document.documentElement.dataset.tema = escuro ? "escuro" : "claro";
+  var chave = "flynex-tema";
+  var escuro = false;
+
+  try {
+    var salvo = localStorage.getItem(chave);
+    escuro = salvo
+      ? salvo === "escuro"
+      : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  } catch (erro) {
+    escuro = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+
+  function aplicarTema(novoTema) {
+    escuro = novoTema === "escuro";
+    document.documentElement.dataset.tema = escuro ? "escuro" : "claro";
+
+    try {
+      localStorage.setItem(chave, escuro ? "escuro" : "claro");
+    } catch (erro) {
+      // O tema continua funcionando mesmo se o navegador bloquear o armazenamento.
+    }
+  }
+
+  aplicarTema(escuro ? "escuro" : "claro");
 
   document.addEventListener("DOMContentLoaded", function () {
     var menu = document.getElementById("menu");
     if (!menu) return;
 
-    var btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "tema-btn";
-    btn.innerHTML = escuro
-      ? '<i class="fas fa-sun"></i>'
-      : '<i class="fas fa-moon"></i>';
-    menu.appendChild(btn);
+    var botao = document.createElement("button");
+    botao.type = "button";
+    botao.className = "tema-btn";
+    botao.setAttribute("aria-label", escuro ? "Ativar tema claro" : "Ativar tema escuro");
+    botao.setAttribute("aria-pressed", String(escuro));
 
-    btn.onclick = function () {
-      var novo =
-        document.documentElement.dataset.tema === "escuro" ? "claro" : "escuro";
-      document.documentElement.dataset.tema = novo;
-      localStorage.setItem(chave, novo);
-      btn.innerHTML =
-        novo === "escuro"
-          ? '<i class="fas fa-sun"></i>'
-          : '<i class="fas fa-moon"></i>';
-    };
+    function atualizarBotao() {
+      botao.textContent = escuro ? "☼" : "☾";
+      botao.setAttribute("aria-label", escuro ? "Ativar tema claro" : "Ativar tema escuro");
+      botao.setAttribute("aria-pressed", String(escuro));
+    }
+
+    botao.addEventListener("click", function () {
+      aplicarTema(escuro ? "claro" : "escuro");
+      atualizarBotao();
+    });
+
+    atualizarBotao();
+    menu.appendChild(botao);
   });
 })();
